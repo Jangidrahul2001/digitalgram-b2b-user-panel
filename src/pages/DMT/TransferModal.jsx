@@ -93,8 +93,8 @@ const TransferModal = ({ isOpen, onClose, details, setRecieptModalData }) => {
         if (field === 'all' || field === 'amount') {
             if (!amount) {
                 newErrors.amount = 'Amount is required';
-            } else if (parseFloat(amount) < 10) {
-                newErrors.amount = 'Amount must be at least ₹10';
+            } else if (parseFloat(amount) < 100) {
+                newErrors.amount = 'Amount must be at least ₹100';
             } else if (parseFloat(amount) > 5000) { } else if (parseFloat(amount) > 5000) {
                 newErrors.amount = 'Amount cannot exceed 5000';
             }
