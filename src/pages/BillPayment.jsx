@@ -192,10 +192,10 @@ export default function BillPayment() {
           subTitleLabel: "Amount",
           subTitleValue: formatToINR(bill?.amount),
           receiptData: {
-            "Bill No.": data?.data?.billNumber || "",
+            "Bill No.": data?.data?.billNumber||data?.data?.RespBillNumber || "",
             "Customer Mobile": customerMobile || "",
             "Service": selectedCategoryName || "",
-            "Transaction Id": data?.data?.txnid || "",
+            "Transaction Id": data?.data?.referenceId  || "",
             status: "Transaction Successful"
           },
           isOpen: true
@@ -285,6 +285,8 @@ export default function BillPayment() {
     payBill({
       ...bill,
         ...(bill?.data?.billerResponse || {}),
+      additionalInfo:(bill?.data?.additionalInfo?.info || []),
+        ...(bill?.data?.inputParams || {}),
       billAmount: billAmount,
       customerName: customerName,
       billerId: selectedBiller?.billerId,
